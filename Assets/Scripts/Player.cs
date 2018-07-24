@@ -10,13 +10,13 @@ public class Player : MonoBehaviour
     private float turnSpeed = 10.0f;
     [SerializeField]
     private Camera mainCamera;
-    static float interpolatorTime = 0.0f;
+    [SerializeField]
+    private float cameraSpeed = 4.0f;
+    private int rotOffset = 90;
     [SerializeField]
     private float horizontalSpeed = 0.1f;
     [SerializeField]
     private float verticalSpeed = 0.1f;
-    [SerializeField]
-    private float CameraMoveSpeed = 0.1f;
     void Update()
     {
         Point();
@@ -30,16 +30,12 @@ public class Player : MonoBehaviour
     }
     void UpdateCamera()
     {
-        mainCamera.transform.position = new Vector3(Mathf.Lerp(mainCamera.transform.position.x, transform.position.x, interpolatorTime), Mathf.Lerp(mainCamera.transform.position.y, transform.position.y, interpolatorTime), mainCamera.transform.position.z);
+        mainCamera.transform.position = new Vector3(Mathf.Lerp(mainCamera.transform.position.x, transform.position.x, cameraSpeed * Time.deltaTime), Mathf.Lerp(mainCamera.transform.position.y, transform.position.y, cameraSpeed * Time.deltaTime), mainCamera.transform.position.z);
     }
     void Movement()
     {
         var x = Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime;
         var y = Input.GetAxisRaw("Vertical") * verticalSpeed * Time.deltaTime;
-        if (x != 0 || y != 0)
-            interpolatorTime += CameraMoveSpeed * Time.deltaTime;
-        else
-            interpolatorTime = 0.0f;
         // Translate player in global space coordinates
         transform.Translate(x, y, 0, Space.World);
     }
@@ -47,7 +43,7 @@ public class Player : MonoBehaviour
     {
         Vector2 direction = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         // Calculate angle between two vectors
-        float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90;
+        float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - rotOffset;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // Interpolate player rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
