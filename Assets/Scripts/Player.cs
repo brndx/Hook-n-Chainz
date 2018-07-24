@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
-    public Texture2D crosshairTexture;
-    public float crosshairScale = 1;
+    [SerializeField]
+    private GameObject crosshair;
     [SerializeField]
     private float turnSpeed = 10.0f;
-    public Camera mainCamera;
+    [SerializeField]
+    private Camera mainCamera;
     static float interpolatorTime = 0.0f;
     [SerializeField]
     private float horizontalSpeed = 0.1f;
@@ -16,13 +17,9 @@ public class Player : MonoBehaviour
     private float verticalSpeed = 0.1f;
     [SerializeField]
     private float CameraMoveSpeed = 0.1f;
-    void Start()
-    {
-
-    }
     void Update()
     {
-        LookTowardsMouse1();
+        Point();
         Crosshair();
 
     }
@@ -43,45 +40,21 @@ public class Player : MonoBehaviour
             interpolatorTime += CameraMoveSpeed * Time.deltaTime;
         else
             interpolatorTime = 0.0f;
-
-        transform.Translate(x, y, 0);
+        // Translate player in global space coordinates
+        transform.Translate(x, y, 0, Space.World);
     }
-    //Makes the player face towards the current position of the mouse.
-    void LookTowardsMouse1()
+    void Point()
     {
         Vector2 direction = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Calculate angle between two vectors
+        float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Interpolate player rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-        //transform.rotation = rotation;
-        //Include this into the function too, please: Debug.DrawLine(ray.origin, lookTarget, Color.red); - Delete This Line When Done. 
-  
-
-        //"Old Code" to be deleted or used if you want.
-        /* RaycastHit hit;
-          Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-         if (Physics.Raycast(ray, out hit))
-         {
-             Vector2 lookTarget = hit.point;
-             Debug.DrawLine(ray.origin, lookTarget, Color.red);
-         }
-         // rotate towards target
-          var lookDelta = (hit.point - transform.position);
-          var targetRot = Quaternion.LookRotation(lookDelta);
-          var rotSpeed = turnSpeed * Time.deltaTime;
-          transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed);
-          */
     }
     void Crosshair()
     {
-        //if not paused
-        if (Time.timeScale != 0)
-        {
-            if (crosshairTexture != null)
-                GUI.DrawTexture(new Rect((Screen.width - crosshairTexture.width * crosshairScale) / 2, (Screen.height - crosshairTexture.height * crosshairScale) / 2, crosshairTexture.width * crosshairScale, crosshairTexture.height * crosshairScale), crosshairTexture);
-            else
-                Debug.Log("No crosshair texture set in the Inspector");
-        }
+            crosshair.transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
     }
 }
 
