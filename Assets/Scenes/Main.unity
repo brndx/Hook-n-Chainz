@@ -254,7 +254,7 @@ Transform:
   - {fileID: 1088509935}
   - {fileID: 669719173}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &229478036
 GameObject:
@@ -1147,6 +1147,7 @@ Transform:
   m_Father: {fileID: 75849901}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1111894706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1221,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> 50be2e15ff834e429b63a6867a1a8c55e5794bf8
 --- !u!1 &1379730666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c116121c515984c87de2e413dcb62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   crosshair: {fileID: 1111894706}
+=======
+  crosshairTexture: {fileID: 0}
+>>>>>>> 50be2e15ff834e429b63a6867a1a8c55e5794bf8
   crosshairScale: 1
   turnSpeed: 100
   mainCamera: {fileID: 1820419342}
