@@ -21,11 +21,11 @@ public class Player : MonoBehaviour
     {
         Point();
         Crosshair();
-        
+        Movement();
     }
     void FixedUpdate()
     {
-        Movement();
+        
 
     }
     private void LateUpdate()
