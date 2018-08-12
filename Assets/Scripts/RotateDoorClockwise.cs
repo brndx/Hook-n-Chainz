@@ -29,11 +29,11 @@ public class RotateDoorClockwise : MonoBehaviour {
     {
         dm.rotateClockwiseMethod();
         dm.beingOpened = true;
-        dm.mod = 3;
+        dm.mod = 2;
     }
     void OnTriggerExit2D(Collider2D other)
     {
         dm.beingOpened = false;
-        dm.mod = 1;
+        dm.mod = 3;
     }
 }

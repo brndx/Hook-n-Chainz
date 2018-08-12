@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorMovement : MonoBehaviour {
 
     public float startRot = 0;
-    float timer = 0.001f;
+    float timer = 0f;
     public int mod = 3;
     public bool beingOpened = false;
     //Increasing the rotation on the Z axis makes the door move anticlockwise
@@ -33,7 +33,7 @@ public class DoorMovement : MonoBehaviour {
             float z = this.transform.eulerAngles.z;
             rot.z = z -= mod;
             this.transform.eulerAngles = rot;
-            timer = 0.001f;
+            timer = 0f;
         }
     }
     public void rotateAntiClockwiseMethod()
@@ -45,7 +45,7 @@ public class DoorMovement : MonoBehaviour {
             float z = this.transform.eulerAngles.z;
             rot.z = z += mod;
             this.transform.eulerAngles = rot;
-            timer = 0.001f;
+            timer = 0f;
         }
     }
 }
