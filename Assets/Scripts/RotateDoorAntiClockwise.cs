@@ -10,7 +10,7 @@ public class RotateDoorAntiClockwise : MonoBehaviour
     void Start()
     {
         dm = this.GetComponentInParent<DoorMovement>();
-        player = GameObject.FindGameObjectWithTag("player");
+        //player = GameObject.FindGameObjectWithTag("player");
 
     }
 
