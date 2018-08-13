@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
+  
     [SerializeField]
     private GameObject crosshair;
+
+    //Camera Variables
     [SerializeField]
     private float turnSpeed = 10.0f;
     [SerializeField]
@@ -13,20 +16,29 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float cameraSpeed = 4.0f;
     private int rotOffset = 90;
+   
+    //Player Moovement Speed
     [SerializeField]
     private float horizontalSpeed = 0.1f;
     [SerializeField]
     private float verticalSpeed = 0.1f;
+    [SerializeField]
+    private float speedMultiplier;
+ void Start()
+    {
+
+    }
     void Update()
     {
+       
         Point();
         Crosshair();
         
+
     }
     void FixedUpdate()
     {
         Movement();
-
     }
     private void LateUpdate()
     {
@@ -38,11 +50,20 @@ public class Player : MonoBehaviour
     }
     void Movement()
     {
-        var x = Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime;
-        var y = Input.GetAxisRaw("Vertical") * verticalSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            var x = Input.GetAxisRaw("Horizontal") * horizontalSpeed * speedMultiplier * Time.deltaTime;
+            var y = Input.GetAxisRaw("Vertical") * verticalSpeed * speedMultiplier * Time.deltaTime;
         // Translate player in global space coordinates
         transform.Translate(x, y, 0, Space.World);
+        }
+        else {
+            var x = Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime;
+            var y = Input.GetAxisRaw("Vertical") * verticalSpeed * Time.deltaTime;
+            // Translate player in global space coordinates
+            transform.Translate(x, y, 0, Space.World);
+        }
     }
+
     void Point()
     {
         Vector2 direction = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;

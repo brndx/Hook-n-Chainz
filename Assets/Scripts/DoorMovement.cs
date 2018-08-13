@@ -6,7 +6,7 @@ public class DoorMovement : MonoBehaviour {
 
     public float startRot = 0;
     float timer = 0f;
-    public int mod = 3;
+    public int mod = 0;
     public bool beingOpened = false;
     //Increasing the rotation on the Z axis makes the door move anticlockwise
     private void Awake()

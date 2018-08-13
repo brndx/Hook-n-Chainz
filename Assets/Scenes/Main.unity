@@ -1924,8 +1924,9 @@ MonoBehaviour:
   turnSpeed: 10
   mainCamera: {fileID: 1820419342}
   cameraSpeed: 75
-  horizontalSpeed: 6.5
-  verticalSpeed: 6.5
+  horizontalSpeed: 5.8
+  verticalSpeed: 5.8
+  speedMultiplier: 1.8
 --- !u!50 &1568845172
 Rigidbody2D:
   serializedVersion: 4
