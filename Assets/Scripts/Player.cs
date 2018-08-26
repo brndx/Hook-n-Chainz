@@ -4,11 +4,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   
-<<<<<<< HEAD
-=======
+
     [SerializeField] GameObject crosshair;
 
->>>>>>> be9f2f546c419de9bc70d1c56a38f25187993b35
     //Camera Variables
     [SerializeField] private float turnSpeed = 10.0f;
     [SerializeField] private Camera mainCamera;

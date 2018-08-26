@@ -1316,7 +1316,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1326622509}
   - {fileID: 1568845169}
   - {fileID: 1820419343}
   m_Father: {fileID: 0}
@@ -1734,7 +1733,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326622509}
-  - component: {fileID: 1326622510}
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
@@ -1749,23 +1747,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326622508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.748, y: 4.281, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: -0.009599972, y: 0.19620004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 731712498}
+  m_Father: {fileID: 1568845169}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1326622510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1326622508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f491a2d9f29019149a618e7efdd9b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1379730666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +1966,7 @@ GameObject:
   - component: {fileID: 1568845169}
   - component: {fileID: 1568845168}
   - component: {fileID: 1568845170}
+  - component: {fileID: 1568845171}
   - component: {fileID: 1568845172}
   - component: {fileID: 1568845173}
   m_Layer: 0
@@ -2045,9 +2033,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.7, y: 3.3, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1326622509}
   m_Father: {fileID: 731712498}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1568845170
 MonoBehaviour:
@@ -2061,6 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c116121c515984c87de2e413dcb62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 0}
   turnSpeed: 10
   mainCamera: {fileID: 1820419342}
   cameraSpeed: 75
@@ -2068,6 +2058,23 @@ MonoBehaviour:
   horizontalSpeed: 5.8
   verticalSpeed: 5.8
   speedMultiplier: 1.3
+--- !u!114 &1568845171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568845167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f491a2d9f29019149a618e7efdd9b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 100
+  Damage: 10
+  WhatToHit:
+    serializedVersion: 2
+    m_Bits: 563
+  timeToFire: 0
 --- !u!50 &1568845172
 Rigidbody2D:
   serializedVersion: 4
@@ -2381,7 +2388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 731712498}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1825420121
 Prefab:
