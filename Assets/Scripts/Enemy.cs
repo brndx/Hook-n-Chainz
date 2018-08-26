@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private float speed;
-    Transform currentPatrolPoint;
-    int currentPatrolIndex;
+    private Transform currentPatrolPoint;
+    private int currentPatrolIndex;
 
     [SerializeField] private Transform target;
     [SerializeField] private float chaseRange;
@@ -37,7 +35,7 @@ public class Enemy : MonoBehaviour
         if (distanceToTarget <chaseRange){
             //Start chasing the target - turn and move towards the target
             Vector3 targetDir = target.position - transform.position;
-            float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
+            float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90.0f;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 180);
             transform.Translate(Vector3.up * Time.deltaTime * speed);
