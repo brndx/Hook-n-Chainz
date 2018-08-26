@@ -1734,7 +1734,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1111894706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.51, y: 4.28, z: 10.101009}
+  m_LocalPosition: {x: -0.1, y: 2.59, z: 10.101009}
   m_LocalScale: {x: 0.7070713, y: 0.7070713, z: 1.010101}
   m_Children: []
   m_Father: {fileID: 1820419343}
@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1111894706}
-  turnSpeed: 10
+  turnSpeed: 100
   mainCamera: {fileID: 1820419342}
   cameraSpeed: 75
   rotOffset: 90
@@ -2079,16 +2079,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568845167}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f491a2d9f29019149a618e7efdd9b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0
-  damage: 10
-  notToHit:
+  fireRate: 100
+  Damage: 10
+  WhatToHit:
     serializedVersion: 2
-    m_Bits: 260
+    m_Bits: 563
+  timeToFire: 1
 --- !u!50 &1568845172
 Rigidbody2D:
   serializedVersion: 4
