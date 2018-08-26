@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DoorMovement : MonoBehaviour {
 
-    public float startRot = 0;
+    [SerializeField] private float startRot = 0;
     float timer = 0f;
     public int mod = 0;
-    public bool beingOpened = false;
+    [SerializeField] public bool beingOpened = false;
     //Increasing the rotation on the Z axis makes the door move anticlockwise
     private void Awake()
     {

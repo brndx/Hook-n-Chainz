@@ -5,25 +5,18 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   
-    [SerializeField]
-    private GameObject crosshair;
+    [SerializeField] private GameObject crosshair;
 
     //Camera Variables
-    [SerializeField]
-    private float turnSpeed = 10.0f;
-    [SerializeField]
-    private Camera mainCamera;
-    [SerializeField]
-    private float cameraSpeed = 4.0f;
-    private int rotOffset = 90;
+    [SerializeField] private float turnSpeed = 10.0f;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private float cameraSpeed = 4.0f;
+    [SerializeField] private int rotOffset = 90;
    
     //Player Moovement Speed
-    [SerializeField]
-    private float horizontalSpeed = 0.1f;
-    [SerializeField]
-    private float verticalSpeed = 0.1f;
-    [SerializeField]
-    private float speedMultiplier;
+    [SerializeField] private float horizontalSpeed = 0.1f;
+    [SerializeField] private float verticalSpeed = 0.1f;
+    [SerializeField] private float speedMultiplier;
  void Start()
     {
 
@@ -50,6 +43,7 @@ public class Player : MonoBehaviour
     }
     void Movement()
     {
+        //Sprinting with LeftShift
         if (Input.GetKey(KeyCode.LeftShift)) {
             var x = Input.GetAxisRaw("Horizontal") * horizontalSpeed * speedMultiplier * Time.deltaTime;
             var y = Input.GetAxisRaw("Vertical") * verticalSpeed * speedMultiplier * Time.deltaTime;

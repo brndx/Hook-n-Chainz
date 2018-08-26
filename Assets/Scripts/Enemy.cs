@@ -6,17 +6,13 @@ public class Enemy : MonoBehaviour
 {
 
 
-    [SerializeField]
-    private Transform[] patrolPoints;
-    [SerializeField]
-    private float speed;
+    [SerializeField] private Transform[] patrolPoints;
+    [SerializeField] private float speed;
     Transform currentPatrolPoint;
     int currentPatrolIndex;
 
-    [SerializeField]
-    private Transform target;
-    [SerializeField]
-    private float chaseRange;
+    [SerializeField] private Transform target;
+    [SerializeField] private float chaseRange;
 
 
     // Use this for initialization
