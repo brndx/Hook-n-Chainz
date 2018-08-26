@@ -7,7 +7,7 @@ public class RotateDoorClockwise : MonoBehaviour {
     GameObject player;
 	// Use this for initialization
 	void Start () {
-        dm = this.GetComponentInParent<DoorMovement>();
+        dm = transform.parent.GetComponent<DoorMovement>();
         //player = GameObject.FindGameObjectWithTag("player");
 		
 	}

@@ -1,12 +1,9 @@
-﻿// Copyright © 2018 Brandon Gallo
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
   
-    [SerializeField] private GameObject crosshair;
-
     //Camera Variables
     [SerializeField] private float turnSpeed = 10.0f;
     [SerializeField] private Camera mainCamera;
@@ -25,7 +22,6 @@ public class Player : MonoBehaviour
     {
        
         Point();
-        Crosshair();
         
 
     }
@@ -66,10 +62,6 @@ public class Player : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // Interpolate player rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-    }
-    void Crosshair()
-    {
-            crosshair.transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
     }
 }
 
