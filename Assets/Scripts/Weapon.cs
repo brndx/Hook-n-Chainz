@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-    [SerializeField]
+    [SerializeField] private float fireRate = 0.0f;
+    [SerializeField] private float damage = 10.0f;
+    [SerializeField] private LayerMask notToHit;
+
+   [SerializeField] private float timeToFire = 0.0f;
+    private Transform firePoint;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+        firePoint = transform;
 	}
 	
 	// Update is called once per frame

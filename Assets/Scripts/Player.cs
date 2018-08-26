@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   
-    [SerializeField] private GameObject crosshair;
+    [SerializeField] GameObject crosshair;
 
     //Camera Variables
     [SerializeField] private float turnSpeed = 10.0f;
