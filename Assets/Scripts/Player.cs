@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float horizontalSpeed = 0.1f;
     [SerializeField] private float verticalSpeed = 0.1f;
     [SerializeField] private float speedMultiplier;
+
+    //Animation
+    [SerializeField] private Animator animator;
+
  void Start()
     {
 
@@ -25,7 +29,7 @@ public class Player : MonoBehaviour
     {
        
         Point();
-        
+        Run(); 
 
     }
     void FixedUpdate()
@@ -42,21 +46,35 @@ public class Player : MonoBehaviour
     }
     void Movement()
     {
+
         //Sprinting with LeftShift
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if (Input.GetKey(KeyCode.LeftShift) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
             var x = Input.GetAxisRaw("Horizontal") * horizontalSpeed * speedMultiplier * Time.deltaTime;
             var y = Input.GetAxisRaw("Vertical") * verticalSpeed * speedMultiplier * Time.deltaTime;
-        // Translate player in global space coordinates
-        transform.Translate(x, y, 0, Space.World);
+            // Translate player in global space coordinates
+            transform.Translate(x, y, 0, Space.World);
+            animator.SetFloat("Speed", 1);
         }
-        else {
+
+        else
+        {
             var x = Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime;
             var y = Input.GetAxisRaw("Vertical") * verticalSpeed * Time.deltaTime;
             // Translate player in global space coordinates
             transform.Translate(x, y, 0, Space.World);
+            animator.SetFloat("Speed", 0);
+                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                animator.SetFloat("Speed", 1);
+            }
+            else
+            {
+                animator.SetFloat("Speed", 0);
+            }
         }
     }
-
+ 
     void Point()
     {
         Vector2 direction = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -65,6 +83,11 @@ public class Player : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // Interpolate player rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
+    }
+
+    void Run()
+    {
+
     }
 }
 
