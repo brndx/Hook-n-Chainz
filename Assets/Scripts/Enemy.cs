@@ -6,11 +6,14 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private float speed;
+    [SerializeField] private float turnSpeed = 10.0f;
+    [SerializeField] private float rotOffset = 90.0f;
     private Transform currentPatrolPoint;
     private int currentPatrolIndex;
 
     [SerializeField] private Transform target;
-    [SerializeField] private float chaseRange;
+    private float chaseRangeLow = 1.0f;
+    private float chaseRangeHigh = 10.0f;
 
 
     // Use this for initialization
@@ -32,12 +35,13 @@ public class Enemy : MonoBehaviour
         //Chase Player 
         //Get the distance to the target and check to see if it is close enough to chase
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
-        if (distanceToTarget <chaseRange){
+        if (distanceToTarget < chaseRangeHigh && distanceToTarget > chaseRangeLow)
+        {
             //Start chasing the target - turn and move towards the target
             Vector3 targetDir = target.position - transform.position;
-            float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90.0f;
-            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 180);
+            float angle = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg - rotOffset;
+            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Euler(90.0f, transform.rotation.y, angle);
             transform.Translate(Vector3.up * Time.deltaTime * speed);
         }
 
