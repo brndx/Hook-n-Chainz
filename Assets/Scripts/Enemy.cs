@@ -1,27 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Transform[] patrolPoints;
-    [SerializeField] private float speed;
-    [SerializeField] private float turnSpeed = 10.0f;
+
     [SerializeField] private float rotOffset = 90.0f;
-    private Transform currentPatrolPoint;
-    private int currentPatrolIndex;
 
     [SerializeField] private Transform target;
-    private float chaseRangeLow = 1.0f;
+    private float chaseRangeLow = 0.6f;
     private float chaseRangeHigh = 10.0f;
+
+    [SerializeField]
+    private Transform destination;
+    NavMeshAgent navMeshAgent;
 
 
     // Use this for initialization
     void Start()
     {
-       
-        currentPatrolIndex = 0;
-        currentPatrolPoint = patrolPoints[currentPatrolIndex];
+        CheckAgent();
     }
 
     // Update is called once per frame
@@ -42,11 +41,27 @@ public class Enemy : MonoBehaviour
             float angle = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg - rotOffset;
             //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Euler(90.0f, transform.rotation.y, angle);
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
+            // transform.Translate(Vector3.up * Time.deltaTime * speed);
+
+            //Move towards target
+            Vector3 targetVector = destination.transform.position;
+            navMeshAgent.SetDestination(targetVector);
         }
 
+    }
+    private void CheckAgent()
+    {
+        navMeshAgent = this.GetComponent<NavMeshAgent>();
+
+        if (navMeshAgent == null)
+        {
+            Debug.LogError("The nav mesh agent component is not attached to " + gameObject.name);
         }
-    
+        else
+        {
+            enemyChase();
+        }
+    }
 }
                
 
