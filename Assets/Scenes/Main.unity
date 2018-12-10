@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 61e0eada290bba54dbda5cf3e125ba6a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 553678549f1f9c743a706929522ee0ef, type: 2}
 --- !u!1 &2806790
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,13 +181,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2806790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 769140925}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &41689489
 Prefab:
   m_ObjectHideFlags: 0
@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 336305323}
   - component: {fileID: 336305325}
   - component: {fileID: 336305324}
+  - component: {fileID: 336305326}
   m_Layer: 0
   m_Name: Collide (8)
   m_TagString: Untagged
@@ -523,6 +524,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!208 &336305326
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 336305322}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &345307793
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +814,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 696487495}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -916,7 +932,6 @@ GameObject:
   m_Component:
   - component: {fileID: 769140925}
   - component: {fileID: 769140927}
-  - component: {fileID: 769140928}
   - component: {fileID: 769140926}
   - component: {fileID: 769140922}
   - component: {fileID: 769140924}
@@ -940,8 +955,8 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 1
   m_Acceleration: 1
-  avoidancePriority: 50
-  m_AngularSpeed: 120
+  avoidancePriority: 99
+  m_AngularSpeed: 999
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1045,21 +1060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b3b60f9918cf8459597fdac8eba9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotOffset: 90
   target: {fileID: 1568845169}
   destination: {fileID: 1568845169}
---- !u!114 &769140928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 769140920}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8695486f989145d4c9b2e3ce56e07737, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 0}
 --- !u!1 &820552727
 GameObject:
   m_ObjectHideFlags: 0
@@ -60336,6 +60338,7 @@ GameObject:
   - component: {fileID: 1088509935}
   - component: {fileID: 1088509934}
   - component: {fileID: 1088509933}
+  - component: {fileID: 1088509936}
   m_Layer: 0
   m_Name: Collide (2)
   m_TagString: Untagged
@@ -60414,6 +60417,21 @@ Transform:
   m_Father: {fileID: 75849901}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!208 &1088509936
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088509932}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1089767002
 GameObject:
   m_ObjectHideFlags: 0
@@ -60622,6 +60640,7 @@ GameObject:
   - component: {fileID: 1435515696}
   - component: {fileID: 1435515698}
   - component: {fileID: 1435515697}
+  - component: {fileID: 1435515699}
   m_Layer: 0
   m_Name: Collide (9)
   m_TagString: Untagged
@@ -60700,6 +60719,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!208 &1435515699
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435515695}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1454115136
 GameObject:
   m_ObjectHideFlags: 0
@@ -60710,6 +60744,7 @@ GameObject:
   - component: {fileID: 1454115137}
   - component: {fileID: 1454115139}
   - component: {fileID: 1454115138}
+  - component: {fileID: 1454115140}
   m_Layer: 0
   m_Name: Collide (7)
   m_TagString: Untagged
@@ -60788,6 +60823,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!208 &1454115140
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1454115136}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1456265761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1319952100713294, guid: 150d464db5af65a43a9ef2391f5c869a,
@@ -60830,6 +60880,7 @@ GameObject:
   - component: {fileID: 1488510147}
   - component: {fileID: 1488510149}
   - component: {fileID: 1488510148}
+  - component: {fileID: 1488510150}
   m_Layer: 0
   m_Name: Collide (5)
   m_TagString: Untagged
@@ -60908,6 +60959,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!208 &1488510150
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1488510146}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1568845167
 GameObject:
   m_ObjectHideFlags: 0
@@ -61730,6 +61796,7 @@ GameObject:
   - component: {fileID: 2031699964}
   - component: {fileID: 2031699963}
   - component: {fileID: 2031699962}
+  - component: {fileID: 2031699965}
   m_Layer: 0
   m_Name: Collide (6)
   m_TagString: Untagged
@@ -61808,6 +61875,21 @@ Transform:
   m_Father: {fileID: 75849901}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!208 &2031699965
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2031699961}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2072502695
 GameObject:
   m_ObjectHideFlags: 0
@@ -61818,6 +61900,7 @@ GameObject:
   - component: {fileID: 2072502698}
   - component: {fileID: 2072502697}
   - component: {fileID: 2072502696}
+  - component: {fileID: 2072502699}
   m_Layer: 0
   m_Name: Collide (1)
   m_TagString: Untagged
@@ -61896,6 +61979,21 @@ Transform:
   m_Father: {fileID: 75849901}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+--- !u!208 &2072502699
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2072502695}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2098771536
 GameObject:
   m_ObjectHideFlags: 0

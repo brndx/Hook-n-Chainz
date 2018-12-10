@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField] private float rotOffset = 90.0f;
 
     [SerializeField] private Transform target;
     private float chaseRangeLow = 0.6f;
@@ -36,13 +35,6 @@ public class Enemy : MonoBehaviour
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
         if (distanceToTarget < chaseRangeHigh && distanceToTarget > chaseRangeLow)
         {
-            //Start chasing the target - turn and move towards the target
-            Vector3 targetDir = target.position - transform.position;
-            float angle = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg - rotOffset;
-            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.Euler(90.0f, transform.rotation.y, angle);
-            // transform.Translate(Vector3.up * Time.deltaTime * speed);
-
             //Move towards target
             Vector3 targetVector = destination.transform.position;
             navMeshAgent.SetDestination(targetVector);
