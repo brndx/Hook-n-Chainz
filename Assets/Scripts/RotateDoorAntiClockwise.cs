@@ -28,13 +28,13 @@ public class RotateDoorAntiClockwise : MonoBehaviour
              EnemyAttacked ea = other.gameObject.GetComponent<EnemyAttacked>();
              ea.knockDownEnemy();
          } */
-    void OnTriggerStay(Collider other)
+    void OnTriggerStay2D(Collider2D other)
     {
         dm.rotateAntiClockwiseMethod();
         dm.beingOpened = true;
         dm.mod = 2;
     }
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
         dm.beingOpened = false;
         dm.mod = 3;
