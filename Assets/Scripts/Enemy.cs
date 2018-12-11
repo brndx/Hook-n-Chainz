@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour
 
 
     [SerializeField] private Transform target;
-    private float chaseRangeLow = 0.6f;
-    private float chaseRangeHigh = 10.0f;
+    [SerializeField] private float chaseRangeLow = 0.6f;
+    [SerializeField] private float chaseRangeHigh = 10.0f;
 
     [SerializeField]
     private Transform destination;
